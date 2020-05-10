@@ -1,8 +1,9 @@
 import React from 'react';
 
+import Header from './Header';
 function App() {
   return (
-    <h1>Hello world - by Tao Hansen.</h1>
+    <Header />
   );
 }
 
