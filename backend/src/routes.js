@@ -30,8 +30,23 @@ routes.post('/ongs',
 OngController.create);
 
 //Rota GET/POST/DELETE dos Incidentes
-routes.get('/incidents', IncidentController.index);
-routes.post( '/incidents', IncidentController.create);
+routes.get('/incidents', celebrate({
+    [Segments.QUERY]: Joi.object().keys({
+        page: Joi.number(),
+    })
+    }),
+IncidentController.index);
+
+routes.post( '/incidents', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        title: Joi.string().required().min(5),
+        description: Joi.string().required().min(10),
+        value: Joi.number().required(),
+    }),
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required(),
+    }).unknown(), 
+}), IncidentController.create);
 
 routes.delete('/incidents/:id', celebrate({
     [Segments.PARAMS]: Joi.object().keys({
