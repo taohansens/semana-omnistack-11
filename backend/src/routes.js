@@ -55,6 +55,11 @@ routes.delete('/incidents/:id', celebrate({
 }), IncidentController.delete);
 
 //Rota Sessão/LOGIN
-routes.post('/sessions', SessionController.create);
+routes.post('/sessions', celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        id: Joi.string().required().length(8),
+    })
+}),
+SessionController.create); 
 
 module.exports = routes;
