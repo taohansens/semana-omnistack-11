@@ -18,6 +18,7 @@ describe('ONG',() => {
             uf: "TE"
             });
 
-            console.log(response.body);
+            expect(response.body).toHaveProperty('id');
+            expect(response.body.id).toHaveLength(8);
     })
 })
