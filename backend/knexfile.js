@@ -4,7 +4,7 @@ module.exports = {
  
   /**
      * Padrão
-     **/
+   
   development: {
     client: 'sqlite3',
     connection: {
@@ -26,19 +26,22 @@ migrations: {
 },
 useNullAsDefault: true
 },
-
-/**WEB
-  development: {
-    client: 'sqlite3',
+  **/
+development: {
+    client: 'postgresql',
     connection: {
-      host : '192.168.0.20:5050',
-      user : 'taoh',
-      password : 'pass123',
-      database : 'omnistack',
+      host : 'ec2-34-238-26-109.compute-1.amazonaws.com:5432',
+      user : 'bxovzlguqomkhs',
+      password : '11eed2300e543e4a942bf609e8a225ef46c3863306da579101a1209b32e0d500',
+      database : 'da8ph6u74scvbc',
       charset: 'utf8'
-    }
+    },
+    migrations: {
+      directory: './src/database/migrations'
+    },
+    useNullAsDefault: true
   },
-*/
+
   staging: {
     client: 'postgresql',
     connection: {
